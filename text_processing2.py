@@ -28,7 +28,9 @@ def digits_to_words(input_string):
             >>> tp2.digits_to_words(digits_str2)
             'three one four one five'
     """
-    digit_string = None
+    decimals = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    
+    digit_string = ' '.join([decimals[int(i)] for i in input_string if i.isdigit()])
     return digit_string
 
 
@@ -43,7 +45,7 @@ def digits_to_words(input_string):
 def to_camel_case(underscore_str):
     """
     이 문제에서 첫번째 규칙 'underscore variable' 에서 두번째 규칙 'camelcase variable'으로 변환함
-    * 앞과 뒤에 여러개의 'underscore'는 무시해도 된
+    * 앞과 뒤에 여러개의 'underscore'는 무시해도 됨
     * 만약 어떤 변수 이름이 underscore로만 이루어 진다면, 빈 문자열만 반환해도 됨
 
         Parameters:
@@ -64,5 +66,13 @@ def to_camel_case(underscore_str):
             >>> tp2.to_camel_case(underscore_str3)
             "alreadyCamel"
     """
-    camelcase_str = None
+    if '_' in underscore_str:
+        underscore_str_list = ''.join([i.capitalize() for i in underscore_str.split('_') if i != ""])
+        print(underscore_str_list)
+        camelcase_str = underscore_str_list[:1].lower() + underscore_str_list[1:]
+        
+    
+    else:
+        camelcase_str = underscore_str
+
     return camelcase_str
